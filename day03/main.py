@@ -15,7 +15,7 @@ class Current_location:
         return "{},{}".format(self.x, self.y)
 
 
-def santa_moving(directions):
+def santa_moving(directions, get_houses):
     houses_visited = {"0,0": 1}
     current_location = Current_location()
     for movement in directions:
@@ -34,4 +34,20 @@ def santa_moving(directions):
             houses_visited.update({current_location_string: temp})
         else:
             houses_visited.update({current_location_string: 1})
-    return len(houses_visited)
+    if (get_houses):
+        return houses_visited
+    else:
+        return len(houses_visited)
+
+
+def santa_and_robot_santa(directions):
+    directions_for_santa = directions[1::2]
+    directions_for_robot_santa = directions[::2]
+
+    santas_houses = santa_moving(directions_for_santa, True)
+    robots_santa_houses = santa_moving(directions_for_robot_santa, True)
+
+    merged_houses = santas_houses.copy()
+    merged_houses.update(robots_santa_houses)
+
+    return len(merged_houses)
