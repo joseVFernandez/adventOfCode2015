@@ -5,7 +5,7 @@ Created on Dec 4, 2015
 '''
 import unittest
 
-from main import santa_climbing
+from day01.main import santa_climbing
 
 
 class Test(unittest.TestCase):
