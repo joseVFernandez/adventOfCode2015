@@ -67,6 +67,3 @@ class Decoration ():
         for instruction in array_of_instructions:
             self.process_instruction(instruction)
         return self.sum_up_lights_on()
-
-if __name__ == "__main__":
-    pass
