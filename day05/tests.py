@@ -1036,17 +1036,17 @@ class Test(unittest.TestCase):
 
     def test_nice_simple_redux_success(self):
         self.assertEquals(True, is_it_nice_redux("xyxy"))
-        self.assertEquals(True, is_it_nice_redux("aabcdefgaa"))
+        self.assertEquals(True, is_it_nice_redux("aabcbdefgaa"))
 
     def test_nice_simple_redux_middle(self):
         self.assertEquals(True, is_it_nice_redux("xyxxy"))
         self.assertEquals(True, is_it_nice_redux("abcdefeghiab"))
 
     def test_nice_complex_redux(self):
-        self.assertEquals(True, is_it_nice("qjhvhtzxzqqjkmpb"))
+        self.assertEquals(True, is_it_nice_redux("qjhvhtzxzqqjkmpb"))
 
     def test_empty_naughty_no_double_letter_redux(self):
-        self.assertEquals(False, is_it_nice_redux("xxyxx"))
+        self.assertEquals(True, is_it_nice_redux("xxyxx"))
 
     def test_empty_naughty_forbidden_combo_redux(self):
         self.assertEquals(False, is_it_nice_redux("uurcxstgmygtbstg"))
@@ -1054,9 +1054,8 @@ class Test(unittest.TestCase):
     def test_empty_naughty_lack_of_vowel_redux(self):
         self.assertEquals(False, is_it_nice_redux("ieodomkazucvgmuy"))
 
-    @unittest.skip("Skipping for now")
     def test_answer_redux(self):
-        self.assertEquals(0, count_number_of_nice_redux("""sszojmmrrkwuftyv
+        self.assertEquals(7, count_number_of_nice_redux("""sszojmmrrkwuftyv
         isaljhemltsdzlum
         fujcyucsrxgatisb
         qiqqlmcgnhzparyg
