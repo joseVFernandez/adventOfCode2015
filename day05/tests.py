@@ -1054,8 +1054,11 @@ class Test(unittest.TestCase):
     def test_empty_naughty_lack_of_vowel_redux(self):
         self.assertEquals(False, is_it_nice_redux("ieodomkazucvgmuy"))
 
+    def test_empty_nice_consecutive_pairs_redux(self):
+        self.assertEquals(True, is_it_nice_redux("xilodxfuxphuiiii"))
+
     def test_answer_redux(self):
-        self.assertEquals(7, count_number_of_nice_redux("""sszojmmrrkwuftyv
+        self.assertEquals(55, count_number_of_nice_redux("""sszojmmrrkwuftyv
         isaljhemltsdzlum
         fujcyucsrxgatisb
         qiqqlmcgnhzparyg

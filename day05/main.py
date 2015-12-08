@@ -66,12 +66,12 @@ def is_it_nice_redux(string_input):
     multiple_pairs = False
     for key in pairs:
         array_of_indexes = pairs.get(key)
-        for index2 in array_of_indexes:
-            upper_ceiling = len(array_of_indexes) - 1
-            if index2 < upper_ceiling:
-                if array_of_indexes[index2 + 1] - array_of_indexes[index2] > 1:
-                    multiple_pairs = True
-                    break
+        if (len(array_of_indexes) > 1):
+            head = array_of_indexes[0]
+            tail = array_of_indexes[len(array_of_indexes) - 1]
+            if tail - head > 1:
+                multiple_pairs = True
+                break
 
     if (three_letter_repeat and multiple_pairs):
         result = True
