@@ -21,27 +21,27 @@ class Test(unittest.TestCase):
 
     def test_one_toggle(self):
         self.decoration.toggle_light(0, 0)
-        self.assertEquals(1,
+        self.assertEquals(2,
                           self.decoration.sum_up_lights_on())
         self.decoration.turn_off_light(0, 0)
-        self.assertEquals(0,
+        self.assertEquals(1,
                           self.decoration.sum_up_lights_on())
         self.decoration.turn_on_light(0, 0)
-        self.assertEquals(1,
+        self.assertEquals(2,
                           self.decoration.sum_up_lights_on())
 
     def test_one_rectangle_full(self):
         self.decoration.toggle_rect(0, 0, 9, 9)
-        self.assertEquals(100,
+        self.assertEquals(200,
                           self.decoration.sum_up_lights_on())
         self.decoration.turn_off_rect(0, 0, 9, 9)
-        self.assertEquals(0,
-                          self.decoration.sum_up_lights_on())
-        self.decoration.turn_on_rect(0, 0, 9, 9)
         self.assertEquals(100,
                           self.decoration.sum_up_lights_on())
+        self.decoration.turn_on_rect(0, 0, 9, 9)
+        self.assertEquals(200,
+                          self.decoration.sum_up_lights_on())
         self.decoration.toggle_rect(0, 0, 1, 1)
-        self.assertEquals(96,
+        self.assertEquals(208,
                           self.decoration.sum_up_lights_on())
 
     def test_input(self):
@@ -53,16 +53,16 @@ class Test(unittest.TestCase):
             0, self.decoration.sum_up_lights_on())
         self.decoration.process_instruction("toggle 0,0 through 1,1")
         self.assertEquals(
-            4, self.decoration.sum_up_lights_on())
+            8, self.decoration.sum_up_lights_on())
 
     def test_multiple_inputs(self):
-        self.assertEquals(4,
+        self.assertEquals(8,
                           self.decoration.process_multiple_instructions("""turn on 0,0 through 1,1
         turn off 0,0 through 1,1
         toggle 0,0 through 1,1"""))
 
     def test_multiple_answer(self):
-        self.assertEquals(4,
+        self.assertEquals(14687245,
                           self.decoration.process_multiple_instructions("""toggle 461,550 through 564,900
             turn off 370,39 through 425,839
             turn off 464,858 through 833,915

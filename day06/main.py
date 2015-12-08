@@ -11,13 +11,13 @@ class Decoration ():
 
     def __init__(self):
         dimension = 1000
-        self.lights_setup = [x[:] for x in [[False] * dimension] * dimension]
+        self.lights_setup = [x[:] for x in [[0] * dimension] * dimension]
 
     def sum_up_lights_on(self):
         return sum(sum(self.lights_setup, []))
 
     def toggle_light(self, x, y):
-        self.lights_setup[x][y] = not self.lights_setup[x][y]
+        self.lights_setup[x][y] += 2
 
     def toggle_rect(self, x1, y1, x2, y2):
         for j in range(y1, y2 + 1):
@@ -25,7 +25,7 @@ class Decoration ():
                 self.toggle_light(i, j)
 
     def turn_on_light(self, x, y):
-        self.lights_setup[x][y] = True
+        self.lights_setup[x][y] += 1
 
     def turn_on_rect(self, x1, y1, x2, y2):
         for j in range(y1, y2 + 1):
@@ -33,7 +33,8 @@ class Decoration ():
                 self.turn_on_light(i, j)
 
     def turn_off_light(self, x, y):
-        self.lights_setup[x][y] = False
+        if self.lights_setup[x][y] > 0:
+            self.lights_setup[x][y] -= 1
 
     def turn_off_rect(self, x1, y1, x2, y2):
         for j in range(y1, y2 + 1):
