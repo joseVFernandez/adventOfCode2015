@@ -62,7 +62,7 @@ class Test(unittest.TestCase):
         toggle 0,0 through 1,1"""))
 
     def test_multiple_answer(self):
-        self.assertEquals(4,
+        self.assertEquals(543903,
                           self.decoration.process_multiple_instructions("""toggle 461,550 through 564,900
             turn off 370,39 through 425,839
             turn off 464,858 through 833,915
